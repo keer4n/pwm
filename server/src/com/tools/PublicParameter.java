@@ -3,7 +3,7 @@ package com.tools;
 import java.io.Serializable;
 import java.math.BigInteger;
 
-public class PublicParameter implements Serializable {
+public class PublicParameter implements Serializable{
 	static final long serialVersionUID = 3L;
 	private BigInteger commonPublicKey = null;
 	private BigInteger p = null;
@@ -47,6 +47,10 @@ public class PublicParameter implements Serializable {
 	}
 	public void setY3(BigInteger y3) {
 		this.y3 = y3;
+	}
+	
+	public BigInteger [] getY() {
+		return new BigInteger[] {this.y1, this.y2, this.y3};
 	}
 	
 }

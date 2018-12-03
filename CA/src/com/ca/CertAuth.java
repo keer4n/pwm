@@ -96,12 +96,15 @@ public class CertAuth {
 		
 		BigInteger[] key1 = prim.genKeyPair(caKey.getP(), caKey.getG());
 		pubParam.setY1(key1[0]);
+		servKey.setY1(key1[0]);
 		servKey.setT1(caKey.getK().subtract(key1[1]));
 		BigInteger[] key2 = prim.genKeyPair(caKey.getP(), caKey.getG());
 		pubParam.setY2(key2[0]);
+		servKey.setY2(key2[0]);
 		servKey.setT2(caKey.getK().subtract(key2[1]));
 		BigInteger[] key3 = prim.genKeyPair(caKey.getP(), caKey.getG());
 		pubParam.setY3(key3[0]);
+		servKey.setY3(key3[0]);
 		servKey.setT3(caKey.getK().subtract(key3[1]));
 		
 		writeObject(caKey);
@@ -114,9 +117,9 @@ public class CertAuth {
 	@Command 
 	public void generateUserKeys (String name) throws Exception {
 		UserKey uk = new UserKey();
-		uk.setUid(name);
+		uk.setUid(name+".user");
 		UserReKey urk = new UserReKey();
-		urk.setUid(name);
+		urk.setUid(name+".server");  // Changed the name to server
 		
 		BigInteger s1 = prim.generateRandom(256);
 		urk.setS1(s1);

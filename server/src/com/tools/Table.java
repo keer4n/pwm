@@ -2,7 +2,7 @@ package com.tools;
 
 import java.math.BigInteger;
 
-import com.tools.Serverkey;
+//import com.server.Serverkey;
 
 public class Table {
 	
@@ -124,29 +124,40 @@ public class Table {
 		BigInteger[] random = prim.generateRandomMultiplier(Integer.bitCount(index), pk.getP());
 		
 		EncryptedKeyTuple ret = new EncryptedKeyTuple();
-		
-			if(bitRep.charAt(0) == '0') {
-				Cipher enc = prim.elgamalEncrypt(pk.getP(), pk.getG(), pk.getY1(), BigInteger.ONE);
-				ret.setElement(prim.serverTransform(pk.getP(), sk.getT1(), enc), 0);
-				
-			}else {
-				ret.setElement(prim.blinder(pk.getP(), pk.getG(), pk.getY1(), sk.getT1(), key.getElement(0), random[0]), 0);
+		int randomIndex = 0;
+		// Equivelent to code below (commented)
+		for(int i = 0; i < bitRep.length(); i++) {
+			if(bitRep.charAt(i) == '0') {
+				Cipher enc = prim.elgamalEncrypt(pk.getP(), pk.getG(), pk.getY()[i], BigInteger.ONE);
 			}
-			
-			if(bitRep.charAt(1) == '0') {
-				Cipher enc = prim.elgamalEncrypt(pk.getP(), pk.getG(), pk.getY2(), BigInteger.ONE);
-				ret.setElement(prim.serverTransform(pk.getP(), sk.getT2(), enc), 1);
-				
-			}else {
-				ret.setElement(prim.blinder(pk.getP(), pk.getG(), pk.getY2(), sk.getT2(), key.getElement(1), random[1]), 1);
+			else {
+				ret.setElement(prim.blinder(pk.getP(), pk.getG(), pk.getY()[i], sk.getT()[i], key.getElement(i), random[randomIndex]), 0);
+				randomIndex++;
 			}
-			if(bitRep.charAt(2) == '0') {
-				Cipher enc = prim.elgamalEncrypt(pk.getP(), pk.getG(), pk.getY3(), BigInteger.ONE);
-				ret.setElement(prim.serverTransform(pk.getP(), sk.getT3(), enc), 2);
-				
-			}else {
-				ret.setElement(prim.blinder(pk.getP(), pk.getG(), pk.getY3(), sk.getT3(), key.getElement(2), random[2]), 2);
-			}
+		}
+//		
+//			if(bitRep.charAt(0) == '0') {
+//				Cipher enc = prim.elgamalEncrypt(pk.getP(), pk.getG(), pk.getY1(), BigInteger.ONE);
+//				ret.setElement(prim.serverTransform(pk.getP(), sk.getT1(), enc), 0);
+//				
+//			}else {
+//				ret.setElement(prim.blinder(pk.getP(), pk.getG(), pk.getY1(), sk.getT1(), key.getElement(0), random[0]), 0);
+//			}
+//			
+//			if(bitRep.charAt(1) == '0') {
+//				Cipher enc = prim.elgamalEncrypt(pk.getP(), pk.getG(), pk.getY2(), BigInteger.ONE);
+//				ret.setElement(prim.serverTransform(pk.getP(), sk.getT2(), enc), 1);
+//				
+//			}else {
+//				ret.setElement(prim.blinder(pk.getP(), pk.getG(), pk.getY2(), sk.getT2(), key.getElement(1), random[1]), 1);
+//			}
+//			if(bitRep.charAt(2) == '0') {
+//				Cipher enc = prim.elgamalEncrypt(pk.getP(), pk.getG(), pk.getY3(), BigInteger.ONE);
+//				ret.setElement(prim.serverTransform(pk.getP(), sk.getT3(), enc), 2);
+//				
+//			}else {
+//				ret.setElement(prim.blinder(pk.getP(), pk.getG(), pk.getY3(), sk.getT3(), key.getElement(2), random[2]), 2);
+//			}
 	
 		return ret;
 		

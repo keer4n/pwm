@@ -29,6 +29,10 @@ public class Serverkey implements Serializable{
 	public BigInteger getT1() {
 		return t1;
 	}
+	
+	public BigInteger [] getT() {
+		return new BigInteger [] { this.t1, this.t2, this.t3};
+	}
 	public void setT1(BigInteger t1) {
 		this.t1 = t1;
 	}

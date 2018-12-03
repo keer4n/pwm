@@ -25,5 +25,12 @@ public class Cipher implements Serializable{
 	public void setBeta(BigInteger beta) {
 		this.beta = beta;
 	}
+	public Cipher() {
+		//this.prim = new Primitives();
+	}
+
+	public BigInteger getBeta() {
+		return this.beta;
+	}
 
 }
