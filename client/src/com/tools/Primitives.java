@@ -1,15 +1,15 @@
 package com.tools;
-import java.net.*; 
-import org.bouncycastle.crypto.engines.*;
-import org.bouncycastle.crypto.params.*;
-import org.bouncycastle.jce.interfaces.ElGamalPrivateKey;
-import org.bouncycastle.math.Primes;
-import org.bouncycastle.crypto.generators.*;
+
 import org.bouncycastle.crypto.AsymmetricCipherKeyPair;
-import java.io.*; 
+import org.bouncycastle.crypto.engines.*;
+import org.bouncycastle.crypto.generators.*;
+import org.bouncycastle.crypto.params.*;
+
+import java.io.*;
+import java.math.BigInteger;
+import java.net.*;
 import java.security.*;
 import java.util.Random;
-import java.math.BigInteger;
   
 /**
  * @author keer4n
@@ -73,10 +73,17 @@ public class Primitives
 	   System.out.println("running multiplication");
 	   BigInteger d = elgamalDecrypt(param[0],keys[1],c);
 	   System.out.println(d);
+	   BigInteger[] random = generateRandomMultiplier(2,param[0], new BigInteger("96"));
+	   BigInteger test= BigInteger.ONE;
+	   for (BigInteger r : random) {
+		   System.out.println("Generated random: " + r);
+		   test = test.multiply(r).mod(param[0]);
+	   }
+	   System.out.println("Result: " + test);
    }*/
    
    
-/*    public  void testProc() {
+    public  void testProc() {
     	
     	params.init(512, 10, r);
     	pr = params.generateParameters();
@@ -86,45 +93,50 @@ public class Primitives
     	BigInteger p = pr.getP();
     	System.out.println("p="+p);
     	
-    	BigInteger x = new BigInteger(256,rnd);
+    /*	BigInteger x = new BigInteger(256,rnd);
     	
     	BigInteger y = g.modPow(x, p);
     	
     	BigInteger m = new BigInteger("kiran".getBytes());
     	
-    	BigInteger c[] = elgamalEncrypt(p, g, y, m);
-    	System.out.println("kE,y =" + c[0]+" ,"+ c[1]);
+    	Cipher c = elgamalEncrypt(p, g, y, m);
+    	System.out.println("kE,y =" + c.getAlpha()+" ,"+ c.getAlpha());
     	
     	BigInteger d = elgamalDecrypt(p, x, c);
     	System.out.println("d = " + d.toByteArray());
     	System.out.println("d = " + new String(d.toByteArray()));
-    	
-    	BigInteger K = new BigInteger( 512,rnd);
+    	 */
+		BigInteger K = new BigInteger( 512,rnd);
     	System.out.println(K);
-    	
-    	BigInteger x = new BigInteger(256,rnd);
+
+		BigInteger x = new BigInteger(256,rnd);
     	System.out.println("x="+x);
     	BigInteger pubk = g.modPow(x, p);
     	
     	BigInteger s = K.subtract(x);
     	System.out.println("s="+s);
-    	
+
     	BigInteger message = new BigInteger("kiran".getBytes());
     	System.out.println(message.bitLength());
+		//BigInteger message = new BigInteger("10");
     	System.out.println("message = " + message.toByteArray());
     	System.out.println("message = " + new String(message.toByteArray()));
     	
-    	BigInteger cipher[] = elgamalEncrypt(p, g, pubk, message);
-    	System.out.println("cipher = " + cipher[1].toByteArray());
-    	System.out.println("cipher = " + new String(cipher[1].toByteArray()));
+    	Cipher cipher = elgamalEncrypt(p, g, pubk, message);
+    	System.out.println("cipher alpha= " + cipher.getAlpha()+ "cipher beta = " + cipher.getBeta());
+    	BigInteger d = elgamalDecrypt(p,x,cipher);
+		System.out.println(new String(d.toByteArray()));
+		System.out.println();
+    	//System.out.println("cipher = " + new String(cipher[1].toByteArray()));
     	
-    	BigInteger cipher1[] = serverTransform(p, s, cipher);
-    	System.out.println("cipher1 = " + cipher1[1].toByteArray());
-    	System.out.println("cipher1 = " + new String(cipher1[1].toByteArray()));
+    	Cipher cipher1 = serverTransform(p, s, cipher);
+
+		System.out.println("cipher1 alpha= " + cipher1.getAlpha()+ "cipher1 beta = " + cipher1.getBeta());
     	
-    	BigInteger blind[] = blinder(p, g, pubk, s, cipher1, BigInteger.ONE);
-    	System.out.println("blinder = " + blind[1].toByteArray());
-    	System.out.println("blinded = " + new String(blind[1].toByteArray()));
+    	Cipher cipher2 = blinder(p, g, pubk, s, cipher1, BigInteger.ONE);
+		//System.out.println("cipher2 alpha= " + cipher2.getAlpha()+ "cipher beta = " + cipher2.getBeta());
+    	//System.out.println("blinder = " + blind[1].toByteArray());
+    	//System.out.println("blinded = " + new String(blind[1].toByteArray()));
     	
  
     	BigInteger x1 = new BigInteger(256,rnd);
@@ -134,17 +146,19 @@ public class Primitives
     	System.out.println("sum="+x1.add(s2));
     	
     
-    	BigInteger cipher2[] = serverReencrypt(p, s2, blind);
-    	System.out.println("cipher2 = " + cipher2[1].toByteArray());
-    	System.out.println("cipher2 = " + new String(cipher2[1].toByteArray()));
+    	Cipher cipher3 = serverReencrypt(p, s2, cipher2);
+		System.out.println("cipher3 alpha= " + cipher3.getAlpha()+ "cipher3 beta = " + cipher3.getBeta());
+    	//System.out.println("cipher2 = " + cipher2[1].toByteArray());
+    	//System.out.println("cipher2 = " + new String(cipher2[1].toByteArray()));
     	
-    	System.out.println("sum="+x.add(s));
+    System.out.println("sum="+x.add(s));
     	
-    	BigInteger dec = elgamalDecrypt(p, x1, cipher2);
+    	BigInteger dec = elgamalDecrypt(p, x1, cipher3);
+		System.out.println(dec);
     	System.out.println("dec = " + dec.toByteArray());
     	System.out.println("dec = " + new String(dec.toByteArray()));
     	
-    	BigInteger xx = new BigInteger(256,rnd);
+    		/*BigInteger xx = new BigInteger(256,rnd);
     	BigInteger pubkx = g.modPow(xx, p);
     	BigInteger messagex = new BigInteger("kiran".getBytes());
     	BigInteger[] cipherx = elgamalEncrypt(p, g, pubkx, messagex);
@@ -200,11 +214,11 @@ public class Primitives
     	e.init(false,pubs);
     	byte [] intermidiate = e.processBlock(k iate));
     	e.init(false, pubx);
-    	System.out.println(new String(e.processBlock(intermidiate,0,intermidiate.length)));
+    	System.out.println(new String(e.processBlock(intermidiate,0,intermidiate.length)));*/
     	//e.init(false, key.getPrivate());
     	//System.out.println(new String(e.processBlock(k,0,k.length)));
     	
-    }*/
+    }
     
     
     /**
@@ -286,8 +300,8 @@ public class Primitives
     
     public Cipher divide(Cipher c1, Cipher c2, BigInteger p) {
     	Cipher r = new Cipher();
-    	r.setAlpha(c1.getAlpha().multiply(c2.getAlpha().modInverse(p).mod(p)));
-    	r.setBeta(c1.getBeta().multiply(c2.getBeta().modInverse(p).mod(p)));
+    	r.setAlpha(c1.getAlpha().multiply(c2.getAlpha().modInverse(p)).mod(p));
+    	r.setBeta(c1.getBeta().multiply(c2.getBeta().modInverse(p)).mod(p));
     	return r;
     }
     
@@ -332,7 +346,7 @@ public class Primitives
     	return dec2.equals(BigInteger.ONE);
     }*/
     
-    public BigInteger[] generateRandomMultiplier(int count , BigInteger p) {
+    public BigInteger[] generateRandomMultiplier(int count , BigInteger p, BigInteger equals) {
     	BigInteger[] ret = new BigInteger[count];
     	ret[0] = new BigInteger(100,rnd);
     	BigInteger inv = ret[0];
@@ -340,7 +354,7 @@ public class Primitives
     		ret[i] = new BigInteger(100,rnd);
     		inv = inv.multiply(ret[i]).mod(p);
     	}
-    	ret[count-1] = inv.modInverse(p);
+    	ret[count-1] = equals.multiply(inv.modInverse(p)).mod(p);
     	return ret;
     }
     
@@ -358,13 +372,14 @@ public class Primitives
   
     public Primitives() 
     { 
-        //test1();
+     // testProc();
+
     } 
   
-   /*public static void main(String args[]) 
+  /* public static void main(String args[])
     { 
     
         Primitives pri = new Primitives(); 
      
-    } */
+    }*/
 } 

@@ -1,8 +1,10 @@
 package com.tools;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 
-public class UserReKey {
+public class UserReKey implements Serializable {
+	static final long serialVersionUID = 13L;
 	private BigInteger s1,s2, s3;
 	private String uid;
 	

@@ -1,18 +1,32 @@
 package com.tools;
 
+import java.math.BigInteger;
+
 public class AttributeTuple {
+
+	// can be BigInteger.ONE or BigInteger.TEN
+	//BigInteger.ONE for attribute present
+	//BigInteger.TEN for attribute absent
 	
-	Cipher[] attribute = null;
+	BigInteger[] attribute = null;
 	
 	public AttributeTuple() {
-		this.attribute = new Cipher[3];
+		this.attribute = new BigInteger[3];
 	}
 	
-	public void setAttribute(Cipher c, int i) {
+	public void setAttribute(BigInteger c, int i) {
 		this.attribute[i] = c;
 	}
+
+	public void set(int i) {
+		this.attribute[i] = BigInteger.ONE;
+	}
+
+	public void unset(int i){
+		this.attribute[i] = BigInteger.TEN;
+	}
 	
-	public Cipher getAttribute(int i) {
+	public BigInteger getAttribute(int i) {
 		return this.attribute[i];
 	}
 

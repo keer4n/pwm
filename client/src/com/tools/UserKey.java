@@ -1,8 +1,10 @@
 package com.tools;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 
-public class UserKey {
+public class UserKey implements Serializable {
+    static final long serialVersionUID = 11L;
 	private BigInteger E,x1,x2,x3;
 	private String uid;
 	
@@ -44,5 +46,9 @@ public class UserKey {
 
 	public void setX3(BigInteger x3) {
 		this.x3 = x3;
+	}
+
+	public BigInteger[] getX(){
+		return new BigInteger[] {this.x1, this.x2, this.x3};
 	}
 }
