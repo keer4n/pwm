@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4e2f57a1-49c4-4319-9231-fe2070021631" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../CA/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/client/CAkey.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/client/CertAuth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CA/ca.key" beforeDir="false" afterPath="$PROJECT_DIR$/../CA/ca.key" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CA/pet.key" beforeDir="false" afterPath="$PROJECT_DIR$/../CA/pet.key" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CA/public.parameter" beforeDir="false" afterPath="$PROJECT_DIR$/../CA/public.parameter" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CA/server.key" beforeDir="false" afterPath="$PROJECT_DIR$/../CA/server.key" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/client/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/client/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/com/tools/Cipher.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/com/tools/Cipher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/client/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tools/AttributeTuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tools/AttributeTuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tools/Primitives.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tools/Primitives.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tools/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tools/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tools/UserKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tools/UserKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/tools/UserReKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/tools/UserReKey.java" afterDir="false" />
-    </list>
+    <list default="true" id="4e2f57a1-49c4-4319-9231-fe2070021631" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,8 +14,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/client/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1056">
-              <caret line="296" column="33" selection-start-line="296" selection-start-column="33" selection-end-line="296" selection-end-column="33" />
+            <state relative-caret-position="510">
+              <caret line="275" column="29" lean-forward="true" selection-start-line="275" selection-start-column="29" selection-end-line="275" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -233,7 +208,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544040786082" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544040786958" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/cliche-4/asg.cliche.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -317,12 +292,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1543953698853</updated>
-      <workItem from="1543953712288" duration="50165000" />
+      <workItem from="1543953712288" duration="50792000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50165000" />
+    <option name="totallyTimeSpent" value="50792000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="21" y="-15" width="1890" height="2110" extended-state="0" />
@@ -496,8 +471,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/client/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1056">
-          <caret line="296" column="33" selection-start-line="296" selection-start-column="33" selection-end-line="296" selection-end-column="33" />
+        <state relative-caret-position="510">
+          <caret line="275" column="29" lean-forward="true" selection-start-line="275" selection-start-column="29" selection-end-line="275" selection-end-column="29" />
         </state>
       </provider>
     </entry>
